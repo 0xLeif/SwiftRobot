@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "robotkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/0xLeif/RobotKit",
+      "state" : {
+        "revision" : "6de17ed98ecf5e9a32fa9262dad0db650c09c24a",
+        "version" : "0.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}
