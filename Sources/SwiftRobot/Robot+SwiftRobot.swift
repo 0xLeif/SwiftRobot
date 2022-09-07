@@ -22,24 +22,6 @@ public enum RobotTaskBuilder {
     ) -> [any RobotTask] { components }
 }
 
-// MARK: - SwiftRobot
-
-struct SwiftRobot {
-    var tasks: [any RobotTask]
-    
-    init(
-        @RobotTaskBuilder _ builder: () async throws -> [any RobotTask]
-    ) async rethrows {
-        tasks = try await builder()
-    }
-    
-    func run() async throws {
-        for task in tasks {
-            try await task.run()
-        }
-    }
-}
-
 // MARK: - RobotTaskGroup
 
 struct RobotTaskGroup: RobotTask {
