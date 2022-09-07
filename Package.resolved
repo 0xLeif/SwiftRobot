@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/0xLeif/RobotKit",
       "state" : {
-        "revision" : "6de17ed98ecf5e9a32fa9262dad0db650c09c24a",
-        "version" : "0.1.0"
+        "revision" : "679dda9624ff8949e3bb409471eda19e6d5b59b5",
+        "version" : "0.3.0"
       }
     }
   ],

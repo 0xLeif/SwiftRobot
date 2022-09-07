@@ -2,7 +2,9 @@ import XCTest
 @testable import SwiftRobot
 
 final class SwiftRobotTests: XCTestCase {
-    func testExample() throws {
-        // ...
+    func testExample() async throws {
+//        KeyboardRobotTask {
+//            
+//        }
     }
 }
