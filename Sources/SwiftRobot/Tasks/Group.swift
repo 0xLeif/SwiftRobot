@@ -8,7 +8,7 @@
 import Foundation
 
 public struct RobotTaskGroup: RobotTask {
-    fileprivate let tasks: [any RobotTask]
+    private let tasks: [RobotTask]
     
     public init(
         @RobotTaskBuilder _ builder: () async throws -> RobotTask
@@ -17,7 +17,7 @@ public struct RobotTaskGroup: RobotTask {
     }
     
     public init(
-        @RobotTaskBuilder _ builder: () async throws -> [any RobotTask]
+        @RobotTaskBuilder _ builder: () async throws -> [RobotTask]
     ) async rethrows {
         tasks = try await builder()
     }
