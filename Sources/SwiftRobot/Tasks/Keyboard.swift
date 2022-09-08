@@ -7,9 +7,9 @@
 
 import RobotKit
 
-fileprivate protocol KeyboardRobotTask: RobotTask { }
+private protocol KeyboardRobotTask: RobotTask { }
 extension KeyboardRobotTask {
-    fileprivate var capability: RobotKeyboard {
+    var capability: RobotKeyboard {
         get async {
             await Robot.default.keyboard
         }
@@ -17,7 +17,7 @@ extension KeyboardRobotTask {
 }
 
 public struct TypeKey: KeyboardRobotTask {
-    fileprivate let key: RobotKeyboard.Key
+    private let key: RobotKeyboard.Key
     
     public init(_ key: RobotKeyboard.Key) {
         self.key = key
@@ -29,7 +29,7 @@ public struct TypeKey: KeyboardRobotTask {
 }
 
 public struct TypeKeys: KeyboardRobotTask {
-    fileprivate let keys: [RobotKeyboard.Key]
+    private let keys: [RobotKeyboard.Key]
     
     public init(_ keys: RobotKeyboard.Key...) {
         self.keys = keys
@@ -41,7 +41,7 @@ public struct TypeKeys: KeyboardRobotTask {
 }
 
 public struct TypeCapitalKey: KeyboardRobotTask {
-    fileprivate let key: RobotKeyboard.Key
+    private let key: RobotKeyboard.Key
     
     public init(_ key: RobotKeyboard.Key) {
         self.key = key
@@ -53,7 +53,7 @@ public struct TypeCapitalKey: KeyboardRobotTask {
 }
 
 public struct TypeCapitalKeys: KeyboardRobotTask {
-    fileprivate let keys: [RobotKeyboard.Key]
+    private let keys: [RobotKeyboard.Key]
     
     public init(_ keys: RobotKeyboard.Key...) {
         self.keys = keys
@@ -65,7 +65,7 @@ public struct TypeCapitalKeys: KeyboardRobotTask {
 }
 
 public struct PressKey: KeyboardRobotTask {
-    fileprivate let key: RobotKeyboard.Key
+    private let key: RobotKeyboard.Key
     
     public init(_ key: RobotKeyboard.Key) {
         self.key = key
@@ -77,7 +77,7 @@ public struct PressKey: KeyboardRobotTask {
 }
 
 public struct ReleaseKey: KeyboardRobotTask {
-    fileprivate let key: RobotKeyboard.Key
+    private let key: RobotKeyboard.Key
     
     public init(_ key: RobotKeyboard.Key) {
         self.key = key
