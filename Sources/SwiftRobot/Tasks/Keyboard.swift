@@ -7,14 +7,7 @@
 
 import RobotKit
 
-private protocol KeyboardRobotTask: RobotTask { }
-extension KeyboardRobotTask {
-    var capability: RobotKeyboard {
-        get async {
-            await Robot.default.keyboard
-        }
-    }
-}
+private protocol KeyboardRobotTask: RobotTask, RobotKeyboardCapable { }
 
 public struct TypeKey: KeyboardRobotTask {
     private let key: RobotKeyboard.Key
