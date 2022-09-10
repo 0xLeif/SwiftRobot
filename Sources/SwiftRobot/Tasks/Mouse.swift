@@ -58,12 +58,6 @@ public struct MonitorMouse: MouseRobotTask {
         case start, stop
     }
     
-    public static var isObserving: Bool {
-        get async {
-            await Robot.default.mouse.isObserving
-        }
-    }
-    
     private let action: MonitorAction
     
     public init(_ action: MonitorAction) {
