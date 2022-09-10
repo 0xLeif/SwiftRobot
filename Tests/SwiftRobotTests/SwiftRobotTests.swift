@@ -3,8 +3,18 @@ import XCTest
 
 final class SwiftRobotTests: XCTestCase {
     func testExample() async throws {
-//        KeyboardRobotTask {
-//            
-//        }
+        try await RobotTaskGroup {
+            
+            MoveMouse(to: .init(x: 0, y: 0))
+            
+            MonitorMouse(.start)
+            
+            await RobotTaskGroup {
+                TypeKey(.e)
+                TypeCapitalKey(.f)
+            }
+            
+        }
+        .run()
     }
 }
