@@ -12,6 +12,18 @@ struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .task {
+                try? await SwiftRobot.run {
+                    ClickMouse(.left)
+                    
+                    TypeKey(.e)
+                    TypeKey(.f)
+                    
+                    await RobotTaskGroup {
+                        MoveMouse(to: .zero)
+                    }
+                }
+            }
     }
 }
 

@@ -14,6 +14,6 @@ public enum RobotTaskBuilder {
     ) -> RobotTask { task }
     
     public static func buildBlock(
-        _ tasks: any RobotTask...
-    ) -> [any RobotTask] { tasks }
+        _ tasks: RobotTask...
+    ) -> [RobotTask] { tasks }
 }
