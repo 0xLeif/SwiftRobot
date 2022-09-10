@@ -12,11 +12,11 @@ public enum SwiftRobot { }
 // MARK: - Static Properties
 
 public extension SwiftRobot {
-    static var isMonitoringMouse: Bool {
-        get async {
-            await Robot.default.mouse.isObserving
-        }
-    }
+    static var screen: SwiftRobotScreen = SwiftRobotScreen()
+    static var mouse: SwiftRobotMouse = SwiftRobotMouse()
+    static var keyboard: SwiftRobotKeyboard = SwiftRobotKeyboard()
+    static var vision: SwiftRobotVision = SwiftRobotVision()
+    static var notification: SwiftRobotNotification = SwiftRobotNotification()
 }
 
 // MARK: - Static Functions
