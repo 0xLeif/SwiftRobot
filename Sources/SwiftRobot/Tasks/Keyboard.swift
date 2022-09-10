@@ -84,6 +84,6 @@ public struct ReleaseKey: KeyboardRobotTask {
     }
     
     public func run() async throws {
-        await capability.press(key)
+        await capability.release(key)
     }
 }
