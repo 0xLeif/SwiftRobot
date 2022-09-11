@@ -16,4 +16,16 @@ public enum RobotTaskBuilder {
     public static func buildBlock(
         _ tasks: RobotTask...
     ) -> [RobotTask] { tasks }
+    
+    public static func buildOptional(
+        _ task: RobotTask?
+    ) -> RobotTask { task ?? SwiftClosureTask { } }
+    
+    public static func buildEither(
+        first task: RobotTask
+    ) -> RobotTask { task }
+    
+    public static func buildEither(
+        second task: RobotTask
+    ) -> RobotTask { task }
 }
