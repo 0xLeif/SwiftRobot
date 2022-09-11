@@ -8,14 +8,7 @@
 import RobotKit
 import CoreGraphics
 
-private protocol MouseRobotTask: RobotTask { }
-extension MouseRobotTask {
-    var capability: RobotMouse {
-        get async {
-            await Robot.default.mouse
-        }
-    }
-}
+private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
 
 public struct MoveMouse: MouseRobotTask {
     private let displayID: CGDirectDisplayID
