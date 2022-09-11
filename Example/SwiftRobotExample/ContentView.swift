@@ -30,7 +30,11 @@ struct ContentView: View {
                     if false {
                         TypeKey(.x)
                     } else {
-                        TypeKey(.y)
+                        await RobotTaskGroup {
+                            TypeKey(.a)
+                            TypeKey(.b)
+                            TypeKey(.c)
+                        }
                     }
                 }
             }
