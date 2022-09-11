@@ -22,6 +22,20 @@ struct ContentView: View {
                     await RobotTaskGroup {
                         MoveMouse(to: .zero)
                     }
+
+                    if true {
+                        TypeKey(.b)
+                    }
+                    
+                    if false {
+                        TypeKey(.x)
+                    } else {
+                        await RobotTaskGroup {
+                            TypeKey(.a)
+                            TypeKey(.b)
+                            TypeKey(.c)
+                        }
+                    }
                 }
             }
     }
