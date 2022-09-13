@@ -11,19 +11,19 @@ public struct SwiftRobotScreen: RobotScreenCapable {
     public func bounds(
         display: CGDirectDisplayID = CGMainDisplayID()
     ) async -> CGRect {
-        await capability.bounds(display: display)
+        await screen.bounds(display: display)
     }
     
     public func center(
         display: CGDirectDisplayID = CGMainDisplayID()
     ) async -> CGPoint {
-        await capability.center(display: display)
+        await screen.center(display: display)
     }
     
     public func image(
         display: CGDirectDisplayID = CGMainDisplayID(),
         rect: CGRect
     ) async -> CGImage? {
-        await capability.image(display: display, rect: rect)
+        await screen.image(display: display, rect: rect)
     }
 }
