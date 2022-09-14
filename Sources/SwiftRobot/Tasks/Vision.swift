@@ -27,7 +27,7 @@ public struct ReadImageText: VisionRobotTask {
     
     public func run() async throws {
         try await SwiftRobot.run {
-            try await handler(capability.text(in: image, options: options))
+            try await handler(vision.text(in: image, options: options))
         }
     }
 }

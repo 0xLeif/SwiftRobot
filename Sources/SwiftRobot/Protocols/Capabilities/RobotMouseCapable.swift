@@ -16,30 +16,3 @@ extension RobotMouseCapable {
         }
     }
 }
-
-//protocol RobotMouseScreenCapable { }
-//extension RobotMouseScreenCapable {
-//    var capability: MoveMouseCapability {
-//        MoveMouseCapability.default
-//    }
-//}
-//
-//struct MoveMouseCapability {
-//    static let `default`: MoveMouseCapability = MoveMouseCapability()
-//
-//    private var mouse: RobotMouse {
-//        get async {
-//            await Robot.default.mouse
-//        }
-//    }
-//
-//    private var screen: RobotScreen {
-//        get async {
-//            await Robot.default.screen
-//        }
-//    }
-//
-//    func move(to: CGPoint) async {
-//        await mouse.move(to: to)
-//    }
-//}

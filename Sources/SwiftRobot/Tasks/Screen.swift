@@ -27,7 +27,8 @@ public struct Screenshot: ScreenRobotTask {
     
     public func run() async throws {
         try await SwiftRobot.run {
-            try await handler(screen.image(display: displayID, rect: rect))
+            let value = await screen.image(display: displayID, rect: rect)
+            try await handler(value)
         }
     }
 }

@@ -5,7 +5,7 @@ final class SwiftRobotTests: XCTestCase {
     func testExample() async throws {
         try await RobotTaskGroup {
             
-            MoveMouse(to: .init(x: 0, y: 0))
+            MoveMouse(to: .point(.init(x: 0, y: 0)))
             
             MonitorMouse(.start)
             

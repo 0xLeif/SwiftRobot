@@ -17,7 +17,7 @@ public struct TypeKey: KeyboardRobotTask {
     }
     
     public func run() async throws {
-        await capability.type(key)
+        await keyboard.type(key)
     }
 }
 
@@ -29,7 +29,7 @@ public struct TypeKeys: KeyboardRobotTask {
     }
     
     public func run() async throws {
-        await capability.type(keys: keys)
+        await keyboard.type(keys: keys)
     }
 }
 
@@ -41,7 +41,7 @@ public struct TypeCapitalKey: KeyboardRobotTask {
     }
     
     public func run() async throws {
-        await capability.typeShifted(key)
+        await keyboard.typeShifted(key)
     }
 }
 
@@ -53,7 +53,7 @@ public struct TypeCapitalKeys: KeyboardRobotTask {
     }
     
     public func run() async throws {
-        await capability.typeShifted(keys: keys)
+        await keyboard.typeShifted(keys: keys)
     }
 }
 
@@ -65,7 +65,7 @@ public struct PressKey: KeyboardRobotTask {
     }
     
     public func run() async throws {
-        await capability.press(key)
+        await keyboard.press(key)
     }
 }
 
@@ -77,6 +77,6 @@ public struct ReleaseKey: KeyboardRobotTask {
     }
     
     public func run() async throws {
-        await capability.release(key)
+        await keyboard.release(key)
     }
 }

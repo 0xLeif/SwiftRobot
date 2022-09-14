@@ -8,51 +8,39 @@
 import RobotKit
 import CoreGraphics
 
-private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
-private protocol ScreenRobotTask: RobotTask, RobotScreenCapable { }
-
-public enum ScreenLocation {
+public enum ScreenLocation: RobotScreenCapable {
     case center
     
     case point(CGPoint)
     
-    static func from(_ point: CGPoint) -> ScreenLocation {
-        return .point(point)
-    }
-}
-
-public struct MoveMouse: MouseRobotTask, ScreenRobotTask {
-    private let displayID: CGDirectDisplayID
-    private let location: ScreenLocation
-    
-    public init(
-        displayID: CGDirectDisplayID = CGMainDisplayID(),
-        to location: CGPoint
-    ) {
-        self.displayID = displayID
-        self.location = ScreenLocation.from(location)
-    }
-    
-    public init(
-        displayID: CGDirectDisplayID = CGMainDisplayID(),
-        to position: ScreenLocation
-    ) {
-        self.displayID = displayID
-        self.location = position
-    }
-    
-    public func run() async throws {
-        await mouse.move(to: resolveLocationToCGPoint())
-    }
-    
-    private func resolveLocationToCGPoint() async -> CGPoint {
-        switch location {
+    func toPoint(
+        displayID: CGDirectDisplayID = CGMainDisplayID()
+    ) async -> CGPoint {
+        switch self {
         case .center:
             return await screen.center(display: displayID)
             
         case .point(let point):
             return point
         }
+    }
+}
+
+private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
+public struct MoveMouse: MouseRobotTask {
+    private let displayID: CGDirectDisplayID
+    private let location: ScreenLocation
+    
+    public init(
+        displayID: CGDirectDisplayID = CGMainDisplayID(),
+        to location: ScreenLocation
+    ) {
+        self.displayID = displayID
+        self.location = location
+    }
+    
+    public func run() async throws {
+        await mouse.move(to: await location.toPoint(displayID: displayID))
     }
 }
 
