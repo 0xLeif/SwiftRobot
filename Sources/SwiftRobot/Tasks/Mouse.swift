@@ -13,7 +13,7 @@ public enum ScreenLocation: RobotScreenCapable {
     
     case point(CGPoint)
     
-    func point(
+    func toPoint(
         displayID: CGDirectDisplayID = CGMainDisplayID()
     ) async -> CGPoint {
         switch self {
@@ -33,14 +33,6 @@ public struct MoveMouse: MouseRobotTask {
     
     public init(
         displayID: CGDirectDisplayID = CGMainDisplayID(),
-        to location: CGPoint
-    ) {
-        self.displayID = displayID
-        self.location = .point(location)
-    }
-    
-    public init(
-        displayID: CGDirectDisplayID = CGMainDisplayID(),
         to location: ScreenLocation
     ) {
         self.displayID = displayID
@@ -48,7 +40,7 @@ public struct MoveMouse: MouseRobotTask {
     }
     
     public func run() async throws {
-        await mouse.move(to: await location.point(displayID: displayID))
+        await mouse.move(to: await location.toPoint(displayID: displayID))
     }
 }
 
