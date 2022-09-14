@@ -8,22 +8,39 @@
 import RobotKit
 import CoreGraphics
 
-private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
+public enum ScreenLocation: RobotScreenCapable {
+    case center
+    
+    case point(CGPoint)
+    
+    func toPoint(
+        displayID: CGDirectDisplayID = CGMainDisplayID()
+    ) async -> CGPoint {
+        switch self {
+        case .center:
+            return await screen.center(display: displayID)
+            
+        case .point(let point):
+            return point
+        }
+    }
+}
 
+private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
 public struct MoveMouse: MouseRobotTask {
     private let displayID: CGDirectDisplayID
-    private let location: CGPoint
+    private let location: ScreenLocation
     
     public init(
         displayID: CGDirectDisplayID = CGMainDisplayID(),
-        to location: CGPoint
+        to location: ScreenLocation
     ) {
         self.displayID = displayID
         self.location = location
     }
     
     public func run() async throws {
-        await capability.move(to: location)
+        await mouse.move(to: await location.toPoint(displayID: displayID))
     }
 }
 
@@ -40,8 +57,8 @@ public struct ClickMouse: MouseRobotTask {
     
     public func run() async throws {
         switch button {
-        case .left:     await capability.leftClick()
-        case .right:    await capability.rightClick()
+        case .left:     await mouse.leftClick()
+        case .right:    await mouse.rightClick()
         }
     }
 }
@@ -59,8 +76,8 @@ public struct MonitorMouse: MouseRobotTask {
     
     public func run() async throws {
         switch action {
-        case .start:    await capability.stopMonitor()
-        case .stop:     await capability.stopMonitor()
+        case .start:    await mouse.stopMonitor()
+        case .stop:     await mouse.stopMonitor()
         }
     }
 }

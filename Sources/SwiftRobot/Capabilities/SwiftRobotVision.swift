@@ -13,6 +13,6 @@ public struct SwiftRobotVision: RobotVisionCapable {
         in image: CGImage,
         options: [VNImageOption: Any] = [:]
     ) async throws -> [VNRecognizedTextObservation] {
-        try await capability.text(in: image, options: options)
+        try await vision.text(in: image, options: options)
     }
 }

@@ -6,10 +6,11 @@
 //
 
 import RobotKit
+import CoreGraphics
 
 protocol RobotMouseCapable { }
 extension RobotMouseCapable {
-    var capability: RobotMouse {
+    var mouse: RobotMouse {
         get async {
             await Robot.default.mouse
         }

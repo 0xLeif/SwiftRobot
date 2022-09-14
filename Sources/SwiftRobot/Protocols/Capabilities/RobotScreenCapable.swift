@@ -9,7 +9,7 @@ import RobotKit
 
 protocol RobotScreenCapable { }
 extension RobotScreenCapable {
-    var capability: RobotScreen {
+    var screen: RobotScreen {
         get async {
             await Robot.default.screen
         }

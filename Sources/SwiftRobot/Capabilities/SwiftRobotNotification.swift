@@ -10,13 +10,13 @@ import UserNotifications
 public struct SwiftRobotNotification: RobotNotificationCapable {
     public var delegate: UNUserNotificationCenterDelegate {
         get async {
-            await capability.delegate
+            await notification.delegate
         }
     }
     
     public var authorizationStatus: UNAuthorizationStatus {
         get async {
-            await capability.getAuthorizationStatus()
+            await notification.getAuthorizationStatus()
         }
     }
 }
