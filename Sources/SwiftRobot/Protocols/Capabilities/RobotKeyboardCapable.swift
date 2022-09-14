@@ -9,7 +9,7 @@ import RobotKit
 
 protocol RobotKeyboardCapable { }
 extension RobotKeyboardCapable {
-    var capability: RobotKeyboard {
+    var keyboard: RobotKeyboard {
         get async {
             await Robot.default.keyboard
         }

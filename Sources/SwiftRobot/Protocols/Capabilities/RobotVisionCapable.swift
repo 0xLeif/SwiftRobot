@@ -9,7 +9,7 @@ import RobotKit
 
 protocol RobotVisionCapable { }
 extension RobotVisionCapable {
-    var capability: RobotVision {
+    var vision: RobotVision {
         get async {
             await Robot.default.vision
         }

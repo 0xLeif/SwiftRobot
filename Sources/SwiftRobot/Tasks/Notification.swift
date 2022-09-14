@@ -24,9 +24,9 @@ public struct RequestNotificationAuthorization: NotificationRobotTask {
     
     public func run() async throws {
         if isAuthorizationNeeded {
-            await capability.requestAuthorizationIfNeeded(options: options)
+            await notification.requestAuthorizationIfNeeded(options: options)
         } else {
-            await capability.requestAuthorization(options: options)
+            await notification.requestAuthorization(options: options)
         }
     }
 }
@@ -47,6 +47,10 @@ public struct SendNotification: NotificationRobotTask {
     }
     
     public func run() async throws {
-        try await capability.push(title: title, subtitle: subtitle, message: message)
+        try await notification.push(
+            title: title,
+            subtitle: subtitle,
+            message: message
+        )
     }
 }

@@ -8,20 +8,26 @@
 import RobotKit
 import CoreGraphics
 
-private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
-private protocol ScreenRobotTask: RobotTask, RobotScreenCapable { }
-
-public enum ScreenLocation {
+public enum ScreenLocation: RobotScreenCapable {
     case center
     
     case point(CGPoint)
     
-    static func from(_ point: CGPoint) -> ScreenLocation {
-        return .point(point)
+    func point(
+        displayID: CGDirectDisplayID = CGMainDisplayID()
+    ) async -> CGPoint {
+        switch self {
+        case .center:
+            return await screen.center(display: displayID)
+            
+        case .point(let point):
+            return point
+        }
     }
 }
 
-public struct MoveMouse: MouseRobotTask, ScreenRobotTask {
+private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
+public struct MoveMouse: MouseRobotTask {
     private let displayID: CGDirectDisplayID
     private let location: ScreenLocation
     
@@ -30,29 +36,19 @@ public struct MoveMouse: MouseRobotTask, ScreenRobotTask {
         to location: CGPoint
     ) {
         self.displayID = displayID
-        self.location = ScreenLocation.from(location)
+        self.location = .point(location)
     }
     
     public init(
         displayID: CGDirectDisplayID = CGMainDisplayID(),
-        to position: ScreenLocation
+        to location: ScreenLocation
     ) {
         self.displayID = displayID
-        self.location = position
+        self.location = location
     }
     
     public func run() async throws {
-        await mouse.move(to: resolveLocationToCGPoint())
-    }
-    
-    private func resolveLocationToCGPoint() async -> CGPoint {
-        switch location {
-        case .center:
-            return await screen.center(display: displayID)
-            
-        case .point(let point):
-            return point
-        }
+        await mouse.move(to: await location.point(displayID: displayID))
     }
 }
 

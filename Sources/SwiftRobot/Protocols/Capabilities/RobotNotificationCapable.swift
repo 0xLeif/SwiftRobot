@@ -9,7 +9,7 @@ import RobotKit
 
 protocol RobotNotificationCapable { }
 extension RobotNotificationCapable {
-    var capability: RobotNotification {
+    var notification: RobotNotification {
         get async {
             await Robot.default.notification
         }
