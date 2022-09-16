@@ -12,6 +12,7 @@ struct SwiftRobotExampleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(width: 480, height: 320, alignment: .center)
         }
     }
 }

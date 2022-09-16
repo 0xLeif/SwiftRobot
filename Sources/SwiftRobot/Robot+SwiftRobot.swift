@@ -7,58 +7,46 @@
 
 import RobotKit
 
-// MARK: - RobotTask
+public enum SwiftRobot { }
 
-public protocol RobotTask {
-    func run() async throws
+// MARK: - Static Properties
+
+public extension SwiftRobot {
+    static var screen: SwiftRobotScreen = SwiftRobotScreen()
+    static var mouse: SwiftRobotMouse = SwiftRobotMouse()
+    static var keyboard: SwiftRobotKeyboard = SwiftRobotKeyboard()
+    static var vision: SwiftRobotVision = SwiftRobotVision()
+    static var notification: SwiftRobotNotification = SwiftRobotNotification()
 }
 
-// MARK: - RobotTaskBuilder
+// MARK: - Static Functions
 
-@resultBuilder
-public enum RobotTaskBuilder {
-    public static func buildBlock(
-        _ components: any RobotTask...
-    ) -> [any RobotTask] { components }
-}
-
-// MARK: - RobotTaskGroup
-
-struct RobotTaskGroup: RobotTask {
-    var tasks: [any RobotTask]
-    
-    init(
-        @RobotTaskBuilder _ builder: () async throws -> [any RobotTask]
-    ) async rethrows {
-        tasks = try await builder()
+public extension SwiftRobot {
+    static func run(
+        @RobotTaskBuilder _ builder: () async throws -> RobotTask
+    ) async throws {
+        try await builder().run()
     }
     
-    func run() async throws {
-        for task in tasks {
+    static func run(
+        @RobotTaskBuilder _ builder: () async throws -> [RobotTask]
+    ) async throws {
+        for task in try await builder() {
             try await task.run()
         }
     }
-}
-
-// MARK: - Keyboard RobotTasks
-
-protocol KeyboardRobotTasking: RobotTask { }
-extension KeyboardRobotTasking {
-    var capability: RobotKeyboard {
-        get async {
-            await Robot.default.keyboard
-        }
-    }
-}
-
-struct TypeKey: KeyboardRobotTasking {
-    var key: RobotKeyboard.Key
     
-    init(_ key: RobotKeyboard.Key) {
-        self.key = key
+    @MainActor
+    static func main(
+        @RobotTaskBuilder _ builder: () async throws -> RobotTask
+    ) async throws {
+        try await run(builder)
     }
     
-    func run() async throws {
-        await capability.type(key)
+    @MainActor
+    static func main(
+        @RobotTaskBuilder _ builder: () async throws -> [RobotTask]
+    ) async throws {
+        try await run(builder)
     }
 }
