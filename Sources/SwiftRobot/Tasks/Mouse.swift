@@ -8,25 +8,10 @@
 import RobotKit
 import CoreGraphics
 
-public enum ScreenLocation: RobotScreenCapable {
-    case center
-    
-    case point(CGPoint)
-    
-    func toPoint(
-        displayID: CGDirectDisplayID = CGMainDisplayID()
-    ) async -> CGPoint {
-        switch self {
-        case .center:
-            return await screen.center(display: displayID)
-            
-        case .point(let point):
-            return point
-        }
-    }
-}
-
+/// It powers every SwiftRobot mouse task with RobotMouse Capability
 private protocol MouseRobotTask: RobotTask, RobotMouseCapable { }
+
+/// A RoboTask to change mouse position to a custom or predefined points
 public struct MoveMouse: MouseRobotTask {
     private let displayID: CGDirectDisplayID
     private let location: ScreenLocation
@@ -44,6 +29,7 @@ public struct MoveMouse: MouseRobotTask {
     }
 }
 
+/// A RoboTask to click the right & left mouse buttons
 public struct ClickMouse: MouseRobotTask {
     public enum MouseButton {
         case left, right
@@ -63,6 +49,7 @@ public struct ClickMouse: MouseRobotTask {
     }
 }
 
+/// A RoboTask to start/stop monitoring mouse movement events
 public struct MonitorMouse: MouseRobotTask {
     public enum MonitorAction {
         case start, stop
