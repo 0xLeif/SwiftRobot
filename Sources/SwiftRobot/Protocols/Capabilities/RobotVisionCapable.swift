@@ -7,6 +7,7 @@
 
 import RobotKit
 
+/// It powers SwiftRobot compnents with RobotVision capability
 protocol RobotVisionCapable { }
 extension RobotVisionCapable {
     var vision: RobotVision {

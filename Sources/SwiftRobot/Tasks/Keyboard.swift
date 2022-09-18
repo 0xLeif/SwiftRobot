@@ -7,8 +7,10 @@
 
 import RobotKit
 
+/// It powers every SwiftRobot keyboard task with RobotKeyboard Capability
 private protocol KeyboardRobotTask: RobotTask, RobotKeyboardCapable { }
 
+/// A RoboTask to type single RobotKeyboard key
 public struct TypeKey: KeyboardRobotTask {
     private let key: RobotKeyboard.Key
     
@@ -21,6 +23,7 @@ public struct TypeKey: KeyboardRobotTask {
     }
 }
 
+/// A RoboTask to type one or more RobotKeyboard keys
 public struct TypeKeys: KeyboardRobotTask {
     private let keys: [RobotKeyboard.Key]
     
@@ -33,6 +36,7 @@ public struct TypeKeys: KeyboardRobotTask {
     }
 }
 
+/// A RoboTask to type a capitalized singe RobotKeyboard key
 public struct TypeCapitalKey: KeyboardRobotTask {
     private let key: RobotKeyboard.Key
     
@@ -45,6 +49,7 @@ public struct TypeCapitalKey: KeyboardRobotTask {
     }
 }
 
+/// A RoboTask to type one or more capitalized RobotKeyboard key
 public struct TypeCapitalKeys: KeyboardRobotTask {
     private let keys: [RobotKeyboard.Key]
     
@@ -57,6 +62,7 @@ public struct TypeCapitalKeys: KeyboardRobotTask {
     }
 }
 
+/// A RoboTask to press a key down, until later executing ``ReleaseKey`` to release it
 public struct PressKey: KeyboardRobotTask {
     private let key: RobotKeyboard.Key
     
@@ -69,6 +75,7 @@ public struct PressKey: KeyboardRobotTask {
     }
 }
 
+/// A RoboTask to release a key from being pressed
 public struct ReleaseKey: KeyboardRobotTask {
     private let key: RobotKeyboard.Key
     

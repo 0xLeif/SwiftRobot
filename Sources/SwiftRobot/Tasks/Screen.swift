@@ -8,8 +8,10 @@
 import RobotKit
 import CoreGraphics
 
+/// It powers every SwiftRobot screen task with RobotScreent Capability
 private protocol ScreenRobotTask: RobotTask, RobotScreenCapable { }
 
+/// A RobotTask to take screenshot of the display for a certain CGRect
 public struct Screenshot: ScreenRobotTask {
     private let displayID: CGDirectDisplayID
     private let rect: CGRect
