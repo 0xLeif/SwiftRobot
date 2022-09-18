@@ -8,8 +8,10 @@
 import RobotKit
 import UserNotifications
 
+/// It powers every SwiftRobot notification task with RobotNotification Capability
 private protocol NotificationRobotTask: RobotTask, RobotNotificationCapable { }
 
+/// A RobotTask to request notification permission from the user
 public struct RequestNotificationAuthorization: NotificationRobotTask {
     private let isAuthorizationNeeded: Bool
     private let options: UNAuthorizationOptions
@@ -31,6 +33,7 @@ public struct RequestNotificationAuthorization: NotificationRobotTask {
     }
 }
 
+/// A RobotTask to send notification to the user
 public struct SendNotification: NotificationRobotTask {
     private let title: String
     private let subtitle: String?

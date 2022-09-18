@@ -8,8 +8,10 @@
 import RobotKit
 import Vision
 
+/// It powers every SwiftRobot vision task with RobotVision Capability
 private protocol VisionRobotTask: RobotTask, RobotVisionCapable { }
 
+/// A RobotTask to get the text in the provided image
 public struct ReadImageText: VisionRobotTask {
     private let image: CGImage
     private let options: [VNImageOption: Any]

@@ -20,7 +20,7 @@ struct ContentView: View {
                     TypeKey(.f)
                     
                     await RobotTaskGroup {
-                        MoveMouse(to: .zero)
+                        MoveMouse(to: .center)
                     }
 
                     if true {
