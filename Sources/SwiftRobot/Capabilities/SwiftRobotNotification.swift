@@ -7,6 +7,7 @@
 
 import UserNotifications
 
+/// A component capable of using RobotMouse to send notifications to the user
 public struct SwiftRobotNotification: RobotNotificationCapable {
     public var delegate: UNUserNotificationCenterDelegate {
         get async {
