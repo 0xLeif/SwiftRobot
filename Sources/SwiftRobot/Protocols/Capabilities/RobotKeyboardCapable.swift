@@ -7,6 +7,7 @@
 
 import RobotKit
 
+/// It powers SwiftRobot compnents with RobotKeyboard capability
 protocol RobotKeyboardCapable { }
 extension RobotKeyboardCapable {
     var keyboard: RobotKeyboard {

@@ -7,6 +7,7 @@
 
 import RobotKit
 
+/// It powers SwiftRobot components with RobotScreen capability
 protocol RobotScreenCapable { }
 extension RobotScreenCapable {
     var screen: RobotScreen {

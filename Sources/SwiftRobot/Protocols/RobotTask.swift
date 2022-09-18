@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 
 public protocol RobotTask {
     func run() async throws
 }
