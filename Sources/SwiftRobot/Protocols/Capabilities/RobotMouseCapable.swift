@@ -6,6 +6,7 @@
 //
 
 import RobotKit
+import CoreGraphics
 
 /// It powers SwiftRobot compnents with RobotMouse capability
 protocol RobotMouseCapable { }
