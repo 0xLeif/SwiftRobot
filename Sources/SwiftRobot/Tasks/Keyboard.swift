@@ -62,7 +62,10 @@ public struct TypeCapitalKeys: KeyboardRobotTask {
     }
 }
 
+<<<<<<< HEAD
 /// A RoboTask to press a key down, until later executing ``ReleaseKey`` to release it
+=======
+>>>>>>> 1de4a85a940027319e7cef04dd074beecdb82fe5
 public struct PressKey: KeyboardRobotTask {
     private let key: RobotKeyboard.Key
     
