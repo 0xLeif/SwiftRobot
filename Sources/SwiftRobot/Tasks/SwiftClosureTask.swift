@@ -5,6 +5,7 @@
 //  Created by Leif on 9/10/22.
 //
 
+/// A RobotTask to execute a bunch of Swift language expressions
 public struct SwiftClosureTask: RobotTask {
     private let closure: () async throws -> Void
     

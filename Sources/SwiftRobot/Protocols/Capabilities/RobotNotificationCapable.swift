@@ -7,6 +7,7 @@
 
 import RobotKit
 
+/// It powers SwiftRobot compnents with RobotMouse capability
 protocol RobotNotificationCapable { }
 extension RobotNotificationCapable {
     var notification: RobotNotification {
